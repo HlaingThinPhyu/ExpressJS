@@ -1,0 +1,42 @@
+###############################
+###
+GET http://localhost:3000
+
+###
+GET http://localhost:3000/books
+
+###
+
+GET http://localhost:3000/books?published=2010&tags=jQuery
+
+###
+
+GET http://localhost:3000/books/4fba97070f318c1e73763350
+
+###
+POST http://localhost:3000/books
+Content-Type: application/json
+
+{
+  "tags": [
+    "NUS"
+  ],
+  "pages": 123,
+  "title": "My Book",
+  "authors": [] ,
+  "published": 2020
+}
+
+### Update
+PUT http://localhost:3000/books/5f59c8c42f74711860e209ce
+Content-Type: application/json
+
+{
+"tags": ["NTU"],
+"title": "Your Book",
+"pages": 123,
+"published": 2019
+}
+
+### Delete
+DELETE  http://localhost:3000/books/5f59c8c42f74711860e209ce

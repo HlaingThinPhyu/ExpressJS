@@ -1,0 +1,1 @@
+mongodb+srv://thinn_2020:<password>@cluster0.bbfot.mongodb.net/<dbname>?retryWrites=true&w=majority

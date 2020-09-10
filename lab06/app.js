@@ -3,10 +3,13 @@ const path = require("path");
 const qr = require("qr-image");
 const fs = require("fs");
 const {v4:uuidv4} = require("uuid");
+const bodyParser = require("body-parser");
 
 const app = express();
 
 //app.use("/hello",obj.router);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 
 app.get("/",(req,res)=>{
     res.send("QR");
@@ -20,6 +23,24 @@ const getRespType = (options)=>{
     }
     return "image/png";
 };
+
+app.post("/qr-async", async(req,res)=>{
+    try {
+        let options = {type: "png",...req.query};
+
+        let body = req.body;
+        console.log();
+
+        const code = await qr.image(req.params.data, options);
+        console.log("typeeee "+ options.type);
+        let restype = getRespType(options);
+        res.type(restype);
+        code.pipe(res);
+    } catch (err) {
+        console.log(err.stack);
+        res.status(500).send(err);
+    }
+});
 
 app.get("/qr-async/:data", async(req,res)=>{
     try {
@@ -57,7 +78,3 @@ app.get("/qr/:data",async(req,res)=>{
 app.listen(3000, ()=> {
     console.log('Server is running at port 3000');
 });
-
-
-
-
