@@ -11,9 +11,8 @@ const app = express();
 app.get("/",(req,res)=>{
     res.send("QR");
 });
-let options = {type:"png"};
 
-const getRespType = (type)=>{
+const getRespType = (options)=>{
     if(options.type == "svg"){
         return "svg";
     } else if(options.type == "pdf"){
@@ -27,7 +26,7 @@ app.get("/qr-async/:data", async(req,res)=>{
         let options = {type: "png",...req.query};
         const code = await qr.image(req.params.data, options);
         console.log("typeeee "+ options.type);
-        let restype = getRespType(options.type);
+        let restype = getRespType(options);
         res.type(restype);
         code.pipe(res);
     } catch (err) {
@@ -45,7 +44,7 @@ app.get("/qr/:data",async(req,res)=>{
         fs.writeFileSync(filePath,code);
         console.log(filePath);
         
-        let restype = getRespType(options.type);
+        let restype = getRespType(options);
         res.type(restype);
         res.sendFile(filePath); 
     }catch(err){
