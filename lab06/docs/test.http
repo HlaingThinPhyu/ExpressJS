@@ -1,0 +1,14 @@
+########################################
+
+### qr with tel
+GET http://localhost:3000/qr/tel:8123567
+
+### qr with optional params
+GET http://localhost:3000/qr/tel:8123567?ec_level=L&type=pdf
+
+### qr-async with tel
+GET http://localhost:3000/qr-async/tel:8123567
+
+### qr-async with optional params
+GET http://localhost:3000/qr-async/tel:8123567?ec_level=L&type=svg
+
