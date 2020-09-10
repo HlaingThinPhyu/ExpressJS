@@ -1,0 +1,55 @@
+########################################
+#### List Data
+
+### List all items
+GET http://localhost:3000/api/data
+
+### List items with matching title
+GET http://localhost:3000/api/data?title=things
+
+### List items with sorting
+GET http://localhost:3000/api/data?sorted=asc
+
+
+########################################
+### Get an Item
+GET http://localhost:3000/api/data/3
+
+### Get an item changing case
+GET http://localhost:3000/api/data/3/upper
+
+########################################
+#### Demo
+
+### /api/demo/hello
+GET http://localhost:3000/api/demo/hello
+
+### api/demo/hello/world
+GET http://localhost:3000/api/demo/hello/world
+
+########################################
+### must include one line between header and body to differentiate
+POST http://localhost:3000/api/data
+Content-Type: application/json
+
+# {"hello": "world"}
+{
+      "id": 99,
+      "title": "The 1234"
+}
+
+####
+POST http://localhost:3000/api/data
+Content-Type: application/x-www-form-urlencoded
+
+hello = singapore
+&name = Alex
+
+###
+PUT http://localhost:3000/api/data/99
+Content-Type: application/json
+
+{"title": "The 6789"}
+
+### Delete an item
+DELETE  http://localhost:3000/api/data/2
