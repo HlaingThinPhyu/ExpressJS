@@ -1,0 +1,22 @@
+### Registration 
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "email":"alex@gmail.com",
+    "password":"abcd1234"
+}
+
+### Login
+POST http://localhost:3000/users/login
+Content-Type: application/json
+
+{
+    "email":"alex@gmail.com",
+    "password":"abcd1234"
+}
+
+### GET profile
+GET  http://localhost:3000/users/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjU5ZTYyNzY0ZjZjZDE5M2M5YzgxMWMiLCJlbWFpbCI6ImFsZXhAZ21haWwuY29tIiwicm9sZXMiOlsidXNlciJdLCJpYXQiOjE1OTk3MzA0ODMsImV4cCI6MTYwMDMzNTI4M30.QU05wlR9OAWLPPWN-kfod4Vur6iFiz6iQkQ49u1ckJM
